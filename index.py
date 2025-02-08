@@ -14,7 +14,11 @@ headers = {
 
 app = Flask(__name__)
 
-@app.route('refresh', methods=["GET", "POST"])
+@app.get('/')
+def index():
+    jsonify({"run": True})
+
+@app.route('/refresh', methods=["GET", "POST"])
 def refresh():
     data = {
         "grant_type": "refresh_token",
@@ -26,7 +30,7 @@ def refresh():
     return jsonify(response.json())
 
 
-@app.route('token', methods=["GET", "POST"])
+@app.route('/token', methods=["GET", "POST"])
 def token():
     code = request.args.get('code')
 
