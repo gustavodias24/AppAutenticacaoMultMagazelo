@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.get('/')
 def index():
-    jsonify({"run": True})
+    return jsonify({"run": True})
 
 @app.route('/refresh', methods=["GET", "POST"])
 def refresh():
